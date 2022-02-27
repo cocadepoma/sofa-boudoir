@@ -1,0 +1,73 @@
+.headerContainer {
+    background-image: url(/images/header2.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: "no-repeat";
+    height: 100vh;
+    max-height: 1280px;
+    filter: grayscale(1) brightness(0.7);
+    padding: 1.2rem;
+    box-shadow: 0px 3px 10px 1px #0000007a;
+
+    h4 {
+        position: absolute;
+        bottom: 7rem;
+        right: 3rem;
+        font-family: "Nothing You Could Do", cursive;
+        font-weight: 400;
+        font-size: 1.6rem;
+        color: white;
+        text-align: right;
+    }
+
+    h5 {
+        position: absolute;
+        right: 3rem;
+        bottom: 4rem;
+        font-family: "Nothing You Could Do", cursive;
+        font-weight: 400;
+        font-size: 1.2rem;
+        color: white;
+    }
+}
+
+.gallerySection {
+    h3 {
+        font-family: "Nothing You Could Do", cursive;
+        text-align: center;
+        margin: 6rem 0;
+        font-size: 2.5rem;
+    }
+}
+
+.aboutSection {
+    h3 {
+        font-family: "Nothing You Could Do", cursive;
+        text-align: center;
+        margin: 6rem 0;
+        font-size: 2.5rem;
+    }
+}
+
+.contactSection {
+    h3 {
+        font-family: "Nothing You Could Do", cursive;
+        text-align: center;
+        margin: 6rem 0;
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .headerContainer {
+        h4 {
+            right: 4rem;
+            bottom: 8.5rem;
+            font-size: 2.3rem;
+        }
+
+        h5 {
+            font-size: 1.7rem;
+        }
+    }
+}
