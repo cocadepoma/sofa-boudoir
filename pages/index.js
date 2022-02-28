@@ -7,21 +7,48 @@ import { useCallback, useEffect, useState } from 'react';
 import Gallery from 'react-photo-gallery-next';
 
 import { ImagesPlaceholder } from '../components/imagesPlaceholder/ImagesPlaceholder';
-
+import Image from 'next/image';
 
 export default function Home() {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
+
   const [localImages, setLocalImages] = useState([]);
+  const [ourImage, setOurImage] = useState({});
 
   useEffect(() => {
     fetchImages();
+    fetchOurImage();
   }, []);
 
   const fetchImages = useCallback(async () => {
-    const resp = await fetch('/api/gallery');
-    const { images } = await resp.json();
-    setLocalImages(images);
+    try {
+      const resp = await fetch('/api/gallery');
+      const { images, status, error } = await resp.json();
+
+      if (status === 200) {
+        setLocalImages(images);
+        return;
+      }
+
+      throw new Error(error);
+    } catch (error) {
+      console.log('Error fetching images', error);
+    }
+  }, []);
+
+  const fetchOurImage = useCallback(async () => {
+    try {
+      const resp = await fetch(`/api/gallery/us`);
+      const { images, status, error } = await resp.json();
+      if (status === 200) {
+        setOurImage(images[0]);
+        return;
+      }
+      throw new Error(error);
+    } catch (error) {
+      console.log('Error fetching our image', error);
+    }
   }, []);
 
   const openLightbox = useCallback((event, { photo, index }) => {
@@ -79,13 +106,54 @@ export default function Home() {
 
         <section className={styles.aboutSection}>
           <h3>Sobre Nosotros</h3>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridGap: '1rem',
+            height: '75rem'
+          }}>
+            {
+              ourImage?.src && (
+                <div style={{
+                  position: 'relative',
+                }}>
+                  <Image src={ourImage.src}
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="10% 90%"
+                    className="our-image"
+                  />
+                </div>
+              )
+            }
+
+            <div>
+              <h4>
+                Bla blac
+              </h4>
+              <p>
+                ¡ Hola ! Llegó el momento de conocernos. Somos elsofarojo, Raúl y Estefanía.
+              </p>
+              <p>
+                Quizás no somos las personas indicadas para hablar de nosotros mismos, pero… si estamos de acuerdo en algo es que nos conoceréis mejor porque amamos nuestro trabajo.
+              </p>
+              <p>
+                Disfrutamos sobre todo, en el proceso al preparar una sesión, un paseo por el campo, un atardecer bonito.
+              </p>
+              <p>
+                Buscamos espontaneidad, caricias, una sonrisa a medias, unos ojos que brillan, un perfume que recordarás cuando pasen 5 años.
+              </p>
+              <p>
+                Recuerdos, vivimos obsesionados con captar vuestra esencia y que perduren en el tiempo.
+              </p>
+              <p>
+                Ver una fotografía y revivir una y otra vez ese momento durante toda la vida.
+              </p>
+              <p>
+                Lo verdaderamente importante es disfrutar, ser feliz y por supuesto llevarte parte de nuestro trabajo a casa para disfrutarlo durante mucho tiempo
+              </p>
+            </div>
+          </div>
         </section>
 
         <section className={styles.contactSection}>

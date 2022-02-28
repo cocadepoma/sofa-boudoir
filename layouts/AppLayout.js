@@ -93,12 +93,12 @@ export const AppLayout = ({ children }) => {
       {/* Sidebar Social Media Icons */}
       <div className={styles.socialMedia}>
         <FontAwesomeIcon
-          onClick={() => window.open('https://www.facebook.com/elsofarojoboudoir/', '_blank')}
+          onClick={() => window.open('https://es-es.facebook.com/elsofarojo.es/', '_blank')}
           className={`${styles.socialButton} ${styles.facebook} ${navScrolled ? styles.facebookScrolled : ''}`}
           icon={faFacebookF}
         />
         <FontAwesomeIcon
-          onClick={() => window.open('https://www.facebook.com/elsofarojoboudoir/', '_blank')}
+          onClick={() => window.open('https://www.instagram.com/elsofarojo.es/?hl=es', '_blank')}
           className={`${styles.socialButton} ${styles.instagram} ${navScrolled ? styles.instagramScrolled : ''}`}
           icon={faInstagram}
         />

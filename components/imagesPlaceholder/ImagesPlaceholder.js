@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { ImagePH } from './ImagePH';
 import styles from './ImagesPH.module.scss';
-import { useLayoutEffect } from 'react';
+import { useEffect } from 'react';
 
 export const ImagesPlaceholder = () => {
   const [windowWidth, setWindowWidth] = useState();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setWindowWidth(window.innerWidth);
 
     window.addEventListener('resize', widthListener);
