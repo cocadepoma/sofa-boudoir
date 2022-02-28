@@ -13,7 +13,9 @@ import {
 
 import { Footer } from '../components/footer/Footer';
 import styles from './layouts.module.scss';
+
 import imageLogo from '../assets/images/logo.png';
+import imageLogoBlack from '../assets/images/logo_black.png';
 
 export const AppLayout = ({ children }) => {
   const { pathname } = useRouter();
@@ -47,8 +49,12 @@ export const AppLayout = ({ children }) => {
 
       <nav className={`${styles.nav} ${navScrolled ? styles.navScrolled : ''}`} >
 
-        <div className={styles.logo}>
-          <Image src={imageLogo} />
+        <div className={`${styles.logo} ${navScrolled ? styles.logoScrolled : ''}`}>
+          {
+            navScrolled
+              ? <Image src={imageLogoBlack} />
+              : <Image src={imageLogo} />
+          }
         </div>
 
         <div className={styles.menu}>

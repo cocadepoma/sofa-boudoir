@@ -16,7 +16,7 @@
     background: linear-gradient(
         180deg,
         rgba(0, 0, 0, 1) 0%,
-        rgba(0, 0, 0, 0.5116421568627452) 48%,
+        rgba(0, 0, 0, 0.6116421568627452) 48%,
         rgba(0, 0, 0, 0.0018382352941176405) 100%
     );
     display: flex;
@@ -51,6 +51,10 @@
     .logo {
         margin-top: 2.5rem;
         width: 16rem;
+        transition: all 0.3s ease-in-out;
+        &.logoScrolled {
+            transform: scale(0.8);
+        }
     }
 
     .menu {
@@ -73,6 +77,10 @@
     }
 }
 
+.socialMedia {
+    display: none;
+}
+
 @keyframes growBar {
     0% {
         transform: scale(0);
@@ -89,7 +97,6 @@
         top: 40vh;
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
         z-index: 2;
 
         .socialButton {
@@ -102,6 +109,7 @@
             transition: all 0.5s ease-in-out;
             width: 1.5rem;
             height: 1.5rem;
+            margin-bottom: 0.85rem;
 
             &:hover {
                 border: 1px solid rgba(255, 255, 255, 0);
@@ -153,7 +161,6 @@
         .menu {
             align-items: center;
             display: flex;
-            gap: 1rem;
             justify-content: flex-end;
             width: 100%;
 
@@ -163,9 +170,10 @@
                 font-family: "Alegreya Sans", "Times New Roman", Times, serif;
                 font-size: 1.6rem;
                 font-weight: 400;
-                text-transform: uppercase;
+                margin-right: 1.25rem;
                 letter-spacing: 1.2px;
                 position: relative;
+                text-transform: uppercase;
                 transition: all 0.3s ease-in-out;
 
                 &:hover {
@@ -173,7 +181,11 @@
                 }
 
                 &.active {
-                    color: rgb(237, 93, 4);
+                    color: #bc0202;
+                }
+
+                &:last-child {
+                    margin-right: 0;
                 }
             }
         }

@@ -182,17 +182,16 @@ a {
 }
 
 .react-photo-gallery--gallery img {
-  padding: 0.3rem;
+  padding: 0rem;
   animation: fadeIn 0.5s ease-in-out;
   transition: all 0.3s ease-in-out;
 
 }
 
 .react-photo-gallery--gallery img:hover {
-  padding: 0rem;
-  /* transform: scale(1.02); */
-  box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.5);
-  transform: translateY(-3px);
+  /* padding: 0rem; */
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: 0px 4px 10px -2px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes fadeIn {
@@ -203,4 +202,12 @@ a {
   to {
     opacity: 1;
   }
+}
+
+.logo-nav-scrolled {
+  width: 14rem !important;
+  height: 7rem !important;
+  min-width: unset !important;
+  min-height: unset !important;
+
 }

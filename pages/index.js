@@ -5,23 +5,8 @@ import styles from '../styles/Home.module.scss';
 import Carousel, { Modal, ModalGateway } from "react-images";
 import { useCallback, useEffect, useState } from 'react';
 import Gallery from 'react-photo-gallery-next';
-import { placeHolderMedia } from '../assets/images/placeholder';
-import {
-  Audio,
-  BallTriangle,
-  Bars,
-  Circles,
-  Grid,
-  Hearts,
-  MutatingDots,
-  Oval,
-  Plane,
-  RevolvingDot,
-  Rings,
-  TailSpin,
-  Triangle,
-  Watch
-} from "react-loader-spinner";
+
+import { ImagesPlaceholder } from '../components/imagesPlaceholder/ImagesPlaceholder';
 
 
 export default function Home() {
@@ -52,14 +37,13 @@ export default function Home() {
   const SLIDE_COUNT = 5;
   const slides = Array.from(Array(SLIDE_COUNT).keys());
 
-  console.log(placeHolderMedia)
   return (
     <>
       <AppLayout>
         <div className={styles.headerContainer}>
           {/* <Carousel slides={slides} /> */}
 
-          <h4>"La confianza es lo más <br />sexy que puedes tener"</h4>
+          <h4>"La confianza es lo más <br />sexy que puedes ponerte"</h4>
           <br />
           <h5>El Sofá Rojo Boudoir</h5>
         </div>
@@ -72,16 +56,8 @@ export default function Home() {
           {/* Grid Gallery */}
           {
             localImages.length > 0
-              ? (
-                <Gallery photos={localImages} onClick={openLightbox} />
-              )
-              : (
-                <div className={styles.placeholder} style={{
-                  display: 'flex', justifyContent: 'center', alignItems: 'center',
-                }}>
-                  <TailSpin color="red" height={40} width={40} secondaryColor="grey" strokeWidth={4} />
-                </div>
-              )
+              ? <Gallery photos={localImages} onClick={openLightbox} margin={7} />
+              : <ImagesPlaceholder />
           }
 
           {/* Modal Image Gallery */}
