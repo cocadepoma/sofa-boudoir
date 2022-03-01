@@ -1,15 +1,25 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import Image from 'next/image';
+import dynamic from "next/dynamic";
+
+import Carousel, { Modal, ModalGateway } from "react-images";
+import Gallery from 'react-photo-gallery-next';
+
+
+import { ImagesPlaceholder } from '../components/imagesPlaceholder/ImagesPlaceholder';
 import { AppLayout } from '../layouts/AppLayout';
 // import Carousel from '../components/carousel/Carousel';
 import styles from '../styles/Home.module.scss';
+import { useDimensions } from '../hooks/useDimensions';
 
-import Carousel, { Modal, ModalGateway } from "react-images";
-import { useCallback, useEffect, useState } from 'react';
-import Gallery from 'react-photo-gallery-next';
-
-import { ImagesPlaceholder } from '../components/imagesPlaceholder/ImagesPlaceholder';
-import Image from 'next/image';
 
 export default function Home() {
+  const MapWithNoSSR = dynamic(() => import("../components/map/Map"), {
+    ssr: false
+  });
+
+  const { windowWidth } = useDimensions();
+
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -106,30 +116,22 @@ export default function Home() {
 
         <section className={styles.aboutSection}>
           <h3>Sobre Nosotros</h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gridGap: '1rem',
-            height: '75rem'
-          }}>
+          <div className={styles.aboutUs}>
             {
               ourImage?.src && (
-                <div style={{
-                  position: 'relative',
-                }}>
-                  <Image src={ourImage.src}
-                    layout="fill"
-                    objectFit="cover"
-                    objectPosition="10% 90%"
-                    className="our-image"
-                  />
+                <div className={styles.ourImageContainer}>
+                  <div className={styles.ourImage} style={{
+                    backgroundImage: `url(${ourImage.src})`,
+                  }}>
+
+                  </div>
                 </div>
               )
             }
 
-            <div>
+            <div className={styles.ourMessage}>
               <h4>
-                Bla blac
+                Encantados de conocerte
               </h4>
               <p>
                 ¡ Hola ! Llegó el momento de conocernos. Somos elsofarojo, Raúl y Estefanía.
@@ -138,7 +140,7 @@ export default function Home() {
                 Quizás no somos las personas indicadas para hablar de nosotros mismos, pero… si estamos de acuerdo en algo es que nos conoceréis mejor porque amamos nuestro trabajo.
               </p>
               <p>
-                Disfrutamos sobre todo, en el proceso al preparar una sesión, un paseo por el campo, un atardecer bonito.
+                Disfrutamos sobre todo, en el proceso al preparar una sesión, un paseo por el campo o un bonito atardecer.
               </p>
               <p>
                 Buscamos espontaneidad, caricias, una sonrisa a medias, unos ojos que brillan, un perfume que recordarás cuando pasen 5 años.
@@ -150,21 +152,20 @@ export default function Home() {
                 Ver una fotografía y revivir una y otra vez ese momento durante toda la vida.
               </p>
               <p>
-                Lo verdaderamente importante es disfrutar, ser feliz y por supuesto llevarte parte de nuestro trabajo a casa para disfrutarlo durante mucho tiempo
+                Lo verdaderamente importante es disfrutar, ser feliz y por supuesto llevarte parte de nuestro trabajo a casa para disfrutarlo durante mucho tiempo.
               </p>
+
+
             </div>
           </div>
         </section>
 
         <section className={styles.contactSection}>
           <h3>Contacto</h3>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
+          <div className={styles.contactContainer}>
+            <MapWithNoSSR />
+            <div><h5>964323543</h5></div>
+          </div>
         </section>
 
       </AppLayout>

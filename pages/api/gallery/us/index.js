@@ -26,7 +26,6 @@ async function handler(req, res) {
 };
 
 const getImagesFromDir = async (filepath, dirRelativeToPublicFolder, filename) => {
-  console.log(path.extname(filename))
   if (path.extname(filename) === '.jpg' || path.extname(filename) === '.png') {
     const fetchedImage = await Jimp.read(filepath).then(jimpImage => {
       return {

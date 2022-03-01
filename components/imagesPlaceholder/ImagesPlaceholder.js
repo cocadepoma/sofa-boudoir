@@ -1,25 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react';
 import { ImagePH } from './ImagePH';
 import styles from './ImagesPH.module.scss';
-import { useEffect } from 'react';
+import { useDimensions } from '../../hooks/useDimensions';
 
 export const ImagesPlaceholder = () => {
-  const [windowWidth, setWindowWidth] = useState();
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-
-    window.addEventListener('resize', widthListener);
-    return () => {
-      window.removeEventListener('resize', widthListener);
-    };
-
-  }, []);
-
-  const widthListener = () => {
-    setWindowWidth(window.innerWidth);
-  };
-
+  const { windowWidth } = useDimensions();
   return (
     <div className={styles.mainContainer}>
       {windowWidth >= 768 ? (
