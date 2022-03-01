@@ -33,10 +33,11 @@
 
 .gallerySection {
     padding: 1rem;
+
     h3 {
         font-family: "Nothing You Could Do", cursive;
         text-align: center;
-        margin: 6rem 0;
+        margin: 3rem 0;
         font-size: 2.5rem;
     }
 }
@@ -47,7 +48,7 @@
     h3 {
         font-family: "Nothing You Could Do", cursive;
         text-align: center;
-        margin: 6rem 0;
+        margin: 3rem 0;
         font-size: 2.5rem;
     }
 
@@ -101,7 +102,7 @@
     h3 {
         font-family: "Nothing You Could Do", cursive;
         text-align: center;
-        margin: 6rem 0;
+        margin: 3rem 0;
         font-size: 2.5rem;
     }
     .contactContainer {
@@ -127,10 +128,18 @@
     .gallerySection {
         margin: 0 auto;
         min-height: 100rem;
+
+        h3 {
+            margin: 6rem 0;
+        }
     }
 
     .aboutSection {
         margin: 0 auto;
+
+        h3 {
+            margin: 6rem 0;
+        }
 
         .aboutUs {
             display: grid;

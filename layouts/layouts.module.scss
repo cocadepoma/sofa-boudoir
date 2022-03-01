@@ -55,7 +55,7 @@
         transform: scale(1.075);
 
         &.logoScrolled {
-            transform: scale(0.7);
+            transform: scale(0.7) translate(-51px, -6px);
         }
     }
 
@@ -158,6 +158,10 @@
         .logo {
             margin-top: 2.5rem;
             width: 24rem;
+
+            &.logoScrolled {
+                transform: scale(0.7) translate(-51px, -2px);
+            }
         }
 
         .menu {
