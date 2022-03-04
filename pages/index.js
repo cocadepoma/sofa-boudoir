@@ -12,7 +12,7 @@ import { AppLayout } from '../layouts/AppLayout';
 import styles from '../styles/Home.module.scss';
 import { useDimensions } from '../hooks/useDimensions';
 
-
+import { useParallax } from 'react-scroll-parallax';
 export default function Home() {
   const MapWithNoSSR = dynamic(() => import("../components/map/Map"), {
     ssr: false
@@ -25,6 +25,8 @@ export default function Home() {
 
   const [localImages, setLocalImages] = useState([]);
   const [ourImage, setOurImage] = useState({});
+
+  const { ref } = useParallax({ speed: 5 });
 
   useEffect(() => {
     fetchImages();
@@ -77,7 +79,7 @@ export default function Home() {
   return (
     <>
       <AppLayout>
-        <div className={styles.headerContainer}>
+        <div className={styles.headerContainer} ref={ref}>
           {/* <Carousel slides={slides} /> */}
 
           <h4>"La confianza es lo más <br />sexy que puedes ponerte"</h4>
@@ -116,7 +118,7 @@ export default function Home() {
 
         <section className={styles.aboutSection}>
           <h3>Sobre Nosotros</h3>
-          <div className={styles.aboutUs}>
+          {/* <div className={styles.aboutUs}>
             {
               ourImage?.src && (
                 <div className={styles.ourImageContainer}>
@@ -125,6 +127,50 @@ export default function Home() {
                   }}>
 
                   </div>
+                </div>
+              )
+            }
+
+            <div className={styles.ourMessage}>
+              <h4>
+                Encantados de conocerte
+              </h4>
+              <p>
+                ¡ Hola ! Llegó el momento de conocernos. Somos elsofarojo, Raúl y Estefanía.
+              </p>
+              <p>
+                Quizás no somos las personas indicadas para hablar de nosotros mismos, pero… si estamos de acuerdo en algo es que nos conoceréis mejor porque amamos nuestro trabajo.
+              </p>
+              <p>
+                Disfrutamos sobre todo, en el proceso al preparar una sesión, un paseo por el campo o un bonito atardecer.
+              </p>
+              <p>
+                Buscamos espontaneidad, caricias, una sonrisa a medias, unos ojos que brillan, un perfume que recordarás cuando pasen 5 años.
+              </p>
+              <p>
+                Recuerdos, vivimos obsesionados con captar vuestra esencia y que perduren en el tiempo.
+              </p>
+              <p>
+                Ver una fotografía y revivir una y otra vez ese momento durante toda la vida.
+              </p>
+              <p>
+                Lo verdaderamente importante es disfrutar, ser feliz y por supuesto llevarte parte de nuestro trabajo a casa para disfrutarlo durante mucho tiempo.
+              </p>
+
+
+            </div>
+          </div> */}
+
+          <div className={styles.aboutUs}>
+            {
+              ourImage?.src && (
+                <div className={styles.ourImageContainer}>
+                  <img src={ourImage.src} />
+                  {/* <div className={styles.ourImage} style={{
+                    backgroundImage: `url(${ourImage.src})`,
+                  }}>
+
+                  </div> */}
                 </div>
               )
             }

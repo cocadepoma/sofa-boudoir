@@ -61,6 +61,13 @@
 
     .menu {
         display: none;
+
+        .links {
+            &.disabled {
+                pointer-events: none;
+                color: #9b9b9b80;
+            }
+        }
     }
 
     .responsiveMenu {

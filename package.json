@@ -25,6 +25,7 @@
     "react-leaflet": "^3.2.5",
     "react-loader-spinner": "^6.0.0-0",
     "react-photo-gallery-next": "^8.0.1",
+    "react-scroll-parallax": "^3.0.4",
     "sass": "^1.49.9"
   },
   "devDependencies": {

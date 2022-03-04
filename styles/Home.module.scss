@@ -4,7 +4,7 @@
     background-size: cover;
     background-repeat: "no-repeat";
     height: 100vh;
-    max-height: 1280px;
+    max-height: 1440px;
     filter: grayscale(1) brightness(0.7);
     padding: 1.2rem;
     box-shadow: 0px 3px 10px 1px #0000007a;
@@ -54,16 +54,16 @@
 
     .aboutUs {
         display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-        height: 160rem;
+        // grid-template-columns: 1fr;
+        // grid-template-rows: 1fr 1fr;
+        // max-height: 140rem;
 
         .ourImageContainer {
             margin: 2rem;
-            box-shadow: 1px 4px 8px -2px #00000056;
+            // box-shadow: 1px 4px 8px -2px #00000056;
 
             .ourImage {
-                height: 76rem;
+                height: 46rem;
                 background-size: cover;
                 background-position: center;
             }
@@ -127,7 +127,7 @@
     }
     .gallerySection {
         margin: 0 auto;
-        min-height: 100rem;
+        min-height: 70rem;
 
         h3 {
             margin: 6rem 0;
@@ -136,17 +136,21 @@
 
     .aboutSection {
         margin: 0 auto;
+        background-color: #ececec2e;
+        box-shadow: 2px 2px 10px -2px #0000001c;
 
         h3 {
             margin: 6rem 0;
         }
 
         .aboutUs {
+            max-width: 120rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
             gap: 1rem;
-            height: 70rem;
+            height: 74rem !important;
+            margin: 0 auto;
 
             .ourImageContainer {
                 position: relative;
@@ -156,9 +160,14 @@
                     height: 70rem;
                 }
             }
+            .ourMessage {
+                background-color: #fff;
+            }
         }
     }
     .contactSection {
+        margin: 0 auto;
+        max-width: 120rem;
         padding: 3rem;
 
         h3 {
