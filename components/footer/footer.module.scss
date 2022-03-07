@@ -1,9 +1,79 @@
 .container {
-    background-color: #edd6c7;
-    height: 5rem;
-    font-family: BohemeFloral, sans-serif;
+    background-color: #000000;
+    background-image: url("/images/background/footer.jpg");
+    padding: 8rem 4rem;
+    box-shadow: 0px 3px 10px 1px #0000007a;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: flex-start;
 
-    a {
-        font-size: 1.5rem;
+    h5 {
+        color: #fff;
+        font-family: Cuprum, sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+    p {
+        font-family: Cuprum, sans-serif;
+        font-size: 1.2rem;
+        color: white;
+    }
+    .socialMediaContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .socialMedia {
+            .socialButton {
+                font-size: 0.8rem;
+                color: #fff;
+                border: 1px solid rgba(255, 255, 255, 0.281);
+                border-radius: 50%;
+                padding: 0.9rem;
+                cursor: pointer;
+                transition: all 0.5s ease-in-out;
+                width: 1.5rem;
+                height: 1.5rem;
+                margin-bottom: 0.85rem;
+                margin-right: 1.5rem;
+
+                &:hover {
+                    border: 1px solid rgba(255, 255, 255, 0);
+                    transform: scale(1.1);
+                    box-shadow: 2px 2px 6px -1px #00000069;
+
+                    &.facebook {
+                        background-color: #3b5998;
+                    }
+                    &.twitter {
+                        background-color: #00aced;
+                    }
+                    &.instagram {
+                        background-color: #e1306c;
+                    }
+                }
+                &.facebookScrolled,
+                &.twitterScrolled,
+                &.instagramScrolled {
+                    transform: translateX(-10rem);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+
+        h5 {
+            font-size: 1.7rem;
+        }
+        p {
+            font-size: 1.4rem;
+        }
     }
 }

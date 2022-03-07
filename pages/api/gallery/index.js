@@ -3,7 +3,7 @@ const path = require("path");
 const Jimp = require('jimp');
 
 async function handler(req, res) {
-  const dirRelativeToPublicFolder = 'images';
+  const dirRelativeToPublicFolder = 'images/home_gallery';
   const dir = path.resolve('./public', dirRelativeToPublicFolder);
   const filenames = fs.readdirSync(dir);
 
