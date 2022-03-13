@@ -1,23 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet-defaulticon-compatibility";
 
-const Map = () => {
+const Map = ({ className }) => {
+  const [map, setMap] = useState();
+
+  const [refReady, setRefReady] = useState(false);
+  let popupRef = useRef();
+
+  useEffect(() => {
+    if (refReady) {
+      popupRef.openOn(map);
+    }
+  }, [refReady, map]);
+
   return (
     <MapContainer
       center={[36.6754301, -5.4455106]}
       zoom={14}
       scrollWheelZoom={false}
       style={{ height: "100%", width: "100%" }}
+      className={className}
+      whenCreated={setMap}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={[36.6754301, -5.4455106]} draggable={true} animate={true} autoPan>
-        <Popup>
+        <Popup
+          ref={(r) => {
+            popupRef = r;
+            setRefReady(true);
+          }}
+        >
           <p>
             El sofá rojo, ven a vernos!
           </p>

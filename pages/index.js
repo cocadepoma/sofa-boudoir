@@ -217,7 +217,7 @@ export default function Home() {
             </div>
 
             {/* MAP */}
-            <MapWithNoSSR />
+            <MapWithNoSSR className={styles.contactMap} />
           </div>
         </section>
 
