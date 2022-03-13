@@ -31,7 +31,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 1001;
     transition: all 0.3s ease-in-out;
 
     &.navScrolled {
@@ -86,7 +86,51 @@
 }
 
 .socialMedia {
-    display: none;
+    position: fixed;
+    left: 1rem;
+    top: 40vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 1999;
+
+    .socialButton {
+        font-size: 0.5rem;
+
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.281);
+        border-radius: 50%;
+
+        padding: 0.7rem;
+
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+        width: 1.2rem;
+
+        height: 1.2rem;
+
+        margin-bottom: 0.85rem;
+
+        &:hover {
+            border: 1px solid rgba(255, 255, 255, 0);
+            transform: scale(1.1);
+            box-shadow: 2px 2px 6px -1px #00000069;
+
+            &.facebook {
+                background-color: #3b5998;
+            }
+            &.twitter {
+                background-color: #00aced;
+            }
+            &.instagram {
+                background-color: #e1306c;
+            }
+        }
+        &.facebookScrolled,
+        &.twitterScrolled,
+        &.instagramScrolled {
+            transform: translateX(-10rem);
+        }
+    }
 }
 
 @keyframes growBar {
@@ -100,45 +144,11 @@
 
 @media (min-width: 768px) {
     .socialMedia {
-        position: fixed;
-        left: 1rem;
-        top: 40vh;
-        display: flex;
-        flex-direction: column;
-        z-index: 1999;
-
         .socialButton {
             font-size: 0.8rem;
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.281);
-            border-radius: 50%;
             padding: 0.9rem;
-            cursor: pointer;
-            transition: all 0.5s ease-in-out;
             width: 1.5rem;
             height: 1.5rem;
-            margin-bottom: 0.85rem;
-
-            &:hover {
-                border: 1px solid rgba(255, 255, 255, 0);
-                transform: scale(1.1);
-                box-shadow: 2px 2px 6px -1px #00000069;
-
-                &.facebook {
-                    background-color: #3b5998;
-                }
-                &.twitter {
-                    background-color: #00aced;
-                }
-                &.instagram {
-                    background-color: #e1306c;
-                }
-            }
-            &.facebookScrolled,
-            &.twitterScrolled,
-            &.instagramScrolled {
-                transform: translateX(-10rem);
-            }
         }
     }
 

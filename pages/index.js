@@ -5,22 +5,22 @@ import dynamic from "next/dynamic";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import Gallery from 'react-photo-gallery-next';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faMap, faMobileScreenButton } from '@fortawesome/free-solid-svg-icons';
 
 import { ImagesPlaceholder } from '../components/imagesPlaceholder/ImagesPlaceholder';
 import { AppLayout } from '../layouts/AppLayout';
 // import Carousel from '../components/carousel/Carousel';
 import styles from '../styles/Home.module.scss';
-import { useDimensions } from '../hooks/useDimensions';
 
 import { useParallax } from 'react-scroll-parallax';
 import ContentLoader from "react-content-loader";
+import { waitFor } from '../helpers/helpers';
 
 export default function Home() {
   const MapWithNoSSR = dynamic(() => import("../components/map/Map"), {
     ssr: false
   });
-
-  const { windowWidth } = useDimensions();
 
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
@@ -56,6 +56,8 @@ export default function Home() {
       const resp = await fetch(`/api/gallery/us`);
       const { images, status, error } = await resp.json();
       if (status === 200) {
+        await waitFor(300);
+
         setOurImage(images[0]);
         return;
       }
@@ -133,11 +135,11 @@ export default function Home() {
                     <ContentLoader
                       uniqueKey="raulyfany"
                       width="100%"
-                      height={"100%"}
+                      height={"74rem"}
                       backgroundColor="#f3f3f3"
                       foregroundColor="#ecebeb"
                     >
-                      <rect x="2" y="2" rx="0" ry="0" width="100%" height="100%" />
+                      <rect x="2" y="2" rx="0" ry="0" width="100%" height="74rem" />
                     </ContentLoader>
                   </div>
                 )
@@ -175,8 +177,47 @@ export default function Home() {
         <section className={styles.contactSection}>
           <h3>Contacto</h3>
           <div className={styles.contactContainer}>
+            {/* Info contact */}
+            <div className={styles.contactInfoContainer}>
+              <div className={styles.contactInfoWrapper}>
+
+                <div className={styles.contactIconHeader}>
+                  <FontAwesomeIcon icon={faMobileScreenButton} />
+                  <h4>Teléfonos</h4>
+                </div>
+
+                <div className={styles.contactLinks}>
+                  <a href="tel:+34696666456">Raúl - 696 666 456</a>
+                  <a href="tel:+34622024247">Estefanía - 622 024 247</a>
+                </div>
+              </div>
+
+              <div className={styles.contactInfoWrapper}>
+
+                <div className={styles.contactIconHeader}>
+                  <FontAwesomeIcon icon={faEnvelope} />
+                  <h4>Email</h4>
+                </div>
+
+                <div className={styles.contactLinks}>
+                  <a href="mailto: raul.lemos@elsofarojo.es" target="_blank">raul.lemos@elsofarojo.es</a>
+                </div>
+              </div>
+
+              <div className={styles.contactInfoWrapper}>
+                <div className={styles.contactIconHeader}>
+                  <FontAwesomeIcon icon={faMap} />
+                  <h4>Dirección</h4>
+                </div>
+
+                <div className={styles.contactLinks}>
+                  <a href="https://goo.gl/maps/ipm3XBom5ESprE6D8" target="_blank">Plaza de los Ejércitos Españoles, 9 Bajo, Ubrique (Cádiz)</a>
+                </div>
+              </div>
+            </div>
+
+            {/* MAP */}
             <MapWithNoSSR />
-            <div><h5>964323543</h5></div>
           </div>
         </section>
 

@@ -7,7 +7,7 @@ import "leaflet-defaulticon-compatibility";
 const Map = () => {
   return (
     <MapContainer
-      center={[36.51251834199624, -6.276558620016245]}
+      center={[36.6754301, -5.4455106]}
       zoom={14}
       scrollWheelZoom={false}
       style={{ height: "100%", width: "100%" }}
@@ -16,8 +16,18 @@ const Map = () => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[36.51251834199624, -6.276558620016245]} draggable={true} animate={true}>
-        <Popup >Ven a vernos! Te esperamos...</Popup>
+      <Marker position={[36.6754301, -5.4455106]} draggable={true} animate={true} autoPan>
+        <Popup>
+          <p>
+            El sofá rojo, ven a vernos!
+          </p>
+          <p>
+            Plaza de los Ejércitos Españoles, 9 Bajo, Ubrique (Cádiz)
+          </p>
+          <p>
+            Te esperamos...
+          </p>
+        </Popup>
       </Marker>
     </MapContainer>
   );

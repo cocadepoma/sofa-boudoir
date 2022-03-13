@@ -43,7 +43,7 @@
 }
 
 .aboutSection {
-    padding: 1rem;
+    padding: 0.75rem;
 
     h3 {
         font-family: "Nothing You Could Do", cursive, sans-serif, Arial;
@@ -56,11 +56,10 @@
         display: grid;
 
         .ourImageContainer {
-            margin: 2rem;
+            margin: 1rem;
             text-align: center;
 
             img {
-                height: 46rem;
                 background-size: cover;
                 background-position: center;
                 box-shadow: 1px 4px 8px -2px #00000056;
@@ -81,7 +80,7 @@
         .ourMessage {
             padding: 2rem;
             box-shadow: 1px 4px 8px -2px #00000056;
-            margin: 2rem;
+            margin: 0.9rem;
 
             h4 {
                 font-size: 1.5rem;
@@ -120,6 +119,49 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
+        height: 90rem;
+        padding: 0.5rem;
+        grid-gap: 2rem;
+        margin-bottom: 5rem;
+
+        .contactInfoContainer {
+            background-color: #fff;
+            padding: 2rem;
+            box-shadow: 1px 4px 8px -2px #00000056;
+
+            .contactInfoWrapper {
+                a {
+                    display: block;
+                    font-family: Cuprum, sans-serif;
+                    color: rgb(133, 133, 133);
+                    letter-spacing: 2px;
+                    line-height: 1.7;
+                }
+
+                .contactIconHeader {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.089);
+                    display: flex;
+                    padding-bottom: 1.25rem;
+
+                    & svg {
+                        font-size: 2.5rem;
+                        color: #7e010180;
+                    }
+
+                    h4 {
+                        font-family: "Nothing You Could Do", cursive, sans-serif, Arial;
+                        font-size: 1.8rem;
+                        margin-left: 2rem;
+                        font-weight: 200;
+                        color: #7e0101;
+                    }
+                }
+
+                .contactLinks {
+                    margin: 3rem 1rem;
+                }
+            }
+        }
     }
 }
 
@@ -157,7 +199,7 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
             gap: 1rem;
-            height: 74rem !important;
+            height: 72rem !important;
             margin: 0 auto;
 
             .ourImageContainer {
@@ -173,6 +215,7 @@
             .ourImagePlaceholder {
                 width: 100%;
                 overflow: hidden;
+                height: 74rem;
 
                 svg {
                     padding: 2rem;
@@ -192,10 +235,6 @@
         }
     }
     .contactSection {
-        margin: 0 auto;
-        max-width: 120rem;
-        padding: 3rem;
-
         h3 {
             font-family: "Nothing You Could Do", cursive, sans-serif, Arial;
             text-align: center;
@@ -203,11 +242,20 @@
             font-size: 2.5rem;
         }
         .contactContainer {
+            margin: 0 auto;
+            max-width: 120rem;
             height: 60rem;
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
             gap: 2rem;
+            margin-bottom: 6rem;
+
+            .contactInfoContainer {
+                background-color: #fff;
+                padding: 2rem;
+                box-shadow: 1px 4px 8px -2px #00000056;
+            }
         }
     }
 }
