@@ -56,7 +56,6 @@ export const AppLayout = ({ children }) => {
       </Head>
 
       <nav className={`${styles.nav} ${navScrolled ? styles.navScrolled : ''}`} >
-
         {/* Topbar Logo */}
         <TopBarLogo navScrolled={navScrolled} styles={styles} />
 
@@ -65,7 +64,6 @@ export const AppLayout = ({ children }) => {
 
         {/* Responsive Menu */}
         <ResponsiveMenu navScrolled={navScrolled} styles={styles} />
-
       </nav>
 
       {/* Sidebar Social Media Icons */}

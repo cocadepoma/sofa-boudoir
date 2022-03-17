@@ -9,6 +9,8 @@ export const ResponsiveMenu = ({ navScrolled, styles }) => {
         className={`${styles.burger} ${navScrolled ? styles.burgerScrolled : ''}`}
         icon={faBars}
       />
+
+      {/* TODO: Add layout for responsive menu */}
     </div>
   );
 };
