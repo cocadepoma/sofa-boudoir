@@ -1,33 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFacebookF, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
-
-import {
-  faBars,
-} from "@fortawesome/free-solid-svg-icons";
-
-import { Footer } from '../components/footer/Footer';
 import styles from './layouts.module.scss';
 
-import imageLogo from '../assets/images/logo.png';
-import imageLogoBlack from '../assets/images/logo_black.png';
+import {
+  ScrollToTop,
+  Footer,
+  SocialMediaButtons,
+  TopBarLogo,
+  TopMenu,
+  ResponsiveMenu,
+} from '../components';
 
 export const AppLayout = ({ children }) => {
-  const { pathname } = useRouter();
-  const [navScrolled, setNavScrolled] = useState(0);
-
-  const handleScroll = () => {
-    if (window.scrollY > 200) {
-      setNavScrolled(true);
-    } else {
-      setNavScrolled(false);
-    }
-  };
+  const [navScrolled, setNavScrolled] = useState(false);
+  const [goTopScrolled, setGoTopScrolled] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -36,6 +23,27 @@ export const AppLayout = ({ children }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const handleScroll = () => {
+    checkNavScroll();
+    checkGoTopScroll();
+  };
+
+  const checkNavScroll = () => {
+    if (window.scrollY > 200) {
+      setNavScrolled(true);
+    } else {
+      setNavScrolled(false);
+    }
+  };
+
+  const checkGoTopScroll = () => {
+    if (window.scrollY > 800) {
+      setGoTopScrolled(true);
+    } else {
+      setGoTopScrolled(false);
+    }
+  };
 
   return (
     <>
@@ -49,72 +57,30 @@ export const AppLayout = ({ children }) => {
 
       <nav className={`${styles.nav} ${navScrolled ? styles.navScrolled : ''}`} >
 
-        <div className={`${styles.logo} ${navScrolled ? styles.logoScrolled : ''}`}>
-          {
-            navScrolled
-              ? <Image src={imageLogoBlack} />
-              : <Image src={imageLogo} />
-          }
-        </div>
+        {/* Topbar Logo */}
+        <TopBarLogo navScrolled={navScrolled} styles={styles} />
 
-        <div className={styles.menu}>
-          {/* Top Menu */}
-          <Link href='/'>
-            <a className={`${styles.links} ${pathname === '/' ? styles.active : ''}`}>Home</a>
-          </Link>
-
-          <Link href='/photoshoots'>
-            <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/photoshoots') ? styles.active : ''}`}>Galería</a>
-          </Link>
-
-          <Link href='/about'>
-            <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/about') ? styles.active : ''}`}>Sobre nosotros</a>
-          </Link>
-
-          <Link href='/blog'>
-            <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/blog') ? styles.active : ''}`}>Blog</a>
-          </Link>
-
-          <Link href='/contact'>
-            <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/contact') ? styles.active : ''}`}>Contacto</a>
-          </Link>
-        </div>
+        {/* Top Menu */}
+        <TopMenu styles={styles} />
 
         {/* Responsive Menu */}
-        <div className={styles.responsiveMenu}>
-          <FontAwesomeIcon
-            onClick={() => { console.log('click') }}
-            className={`${styles.burger} ${navScrolled ? styles.burgerScrolled : ''}`}
-            icon={faBars}
-          />
-        </div>
+        <ResponsiveMenu navScrolled={navScrolled} styles={styles} />
+
       </nav>
 
       {/* Sidebar Social Media Icons */}
-      <div className={styles.socialMedia}>
-        <FontAwesomeIcon
-          onClick={() => window.open('https://es-es.facebook.com/elsofarojo.es/', '_blank')}
-          className={`${styles.socialButton} ${styles.facebook} ${navScrolled ? styles.facebookScrolled : ''}`}
-          icon={faFacebookF}
-        />
-        <FontAwesomeIcon
-          onClick={() => window.open('https://www.instagram.com/elsofarojo.es/?hl=es', '_blank')}
-          className={`${styles.socialButton} ${styles.instagram} ${navScrolled ? styles.instagramScrolled : ''}`}
-          icon={faInstagram}
-        />
-        <FontAwesomeIcon
-          onClick={() => window.open('https://www.facebook.com/elsofarojoboudoir/', '_blank')}
-          className={`${styles.socialButton} ${styles.twitter} ${navScrolled ? styles.twitterScrolled : ''}`}
-          icon={faTwitter}
-        />
-      </div>
+      <SocialMediaButtons navScrolled={navScrolled} styles={styles} />
 
       <div className={styles.globalContainer}>
-
+        {/* Contents */}
         <main className={styles.main}>
           {children}
         </main>
 
+        {/* Go Top Button */}
+        <ScrollToTop goTopScrolled={goTopScrolled} styles={styles} />
+
+        {/* Footer */}
         <Footer />
       </div>
     </>
