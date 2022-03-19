@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Image from 'next/image';
 import dynamic from "next/dynamic";
 
 import Carousel, { Modal, ModalGateway } from "react-images";
@@ -13,7 +12,7 @@ import { AppLayout } from '../layouts/AppLayout';
 // import Carousel from '../components/carousel/Carousel';
 import styles from '../styles/Home.module.scss';
 
-import { useParallax } from 'react-scroll-parallax';
+import { Parallax, ParallaxBanner } from 'react-scroll-parallax';
 import ContentLoader from "react-content-loader";
 import { waitFor } from '../helpers/helpers';
 
@@ -21,14 +20,12 @@ export default function Home() {
   const MapWithNoSSR = dynamic(() => import("../components/map/Map"), {
     ssr: false
   });
-
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
   const [localImages, setLocalImages] = useState([]);
   const [ourImage, setOurImage] = useState({});
 
-  const { ref } = useParallax({ speed: 5 });
 
   useEffect(() => {
     fetchImages();
@@ -83,13 +80,15 @@ export default function Home() {
   return (
     <>
       <AppLayout>
-        <div className={styles.headerContainer} ref={ref}>
-          {/* <Carousel slides={slides} /> */}
+        <Parallax>
+          <div className={styles.headerContainer}>
+            {/* <Carousel slides={slides} /> */}
 
-          <h4>"La confianza es lo más <br />sexy que puedes ponerte"</h4>
-          <br />
-          <h5>El Sofá Rojo Boudoir</h5>
-        </div>
+            <h4>"La confianza es lo más <br />sexy que puedes ponerte"</h4>
+            <br />
+            <h5>El Sofá Rojo Boudoir</h5>
+          </div>
+        </Parallax>
 
         <section className={styles.gallerySection}>
           <h3>
@@ -120,7 +119,7 @@ export default function Home() {
           </ModalGateway>
         </section>
 
-        <section className={styles.aboutSection}>
+        <section className={styles.aboutSection} >
           <h3>Sobre Nosotros</h3>
           <div className={styles.aboutUs}>
             {
@@ -170,6 +169,7 @@ export default function Home() {
               <p>
                 Lo verdaderamente importante es disfrutar, ser feliz y por supuesto llevarte parte de nuestro trabajo a casa para disfrutarlo durante mucho tiempo.
               </p>
+
             </div>
           </div>
         </section>

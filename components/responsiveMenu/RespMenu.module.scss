@@ -1,0 +1,139 @@
+.burger {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 2.6rem;
+    right: 3rem;
+    z-index: 2001;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+        transform: translate(-1rem, 1rem) !important;
+        .bar {
+            background-color: #fff !important;
+        }
+    }
+    &.burgerScrolled {
+        transform: translate(-1rem, -1.2rem);
+
+        .bar {
+            background-color: #000;
+        }
+    }
+
+    .bar {
+        background-color: #fff;
+        width: 2.7rem;
+        height: 0.4rem;
+        margin-bottom: 0.6rem;
+        transition: all 0.3s ease-in-out;
+        border-radius: 0.1rem;
+
+        &.bar2 {
+            transform: translate(-0.3rem, 0rem);
+        }
+
+        &.toggledBar1 {
+            transform: rotate(45deg) translate(0.55rem, 0.6rem);
+            border-radius: 0.3rem;
+        }
+        &.toggledBar2 {
+            transform: rotate(-45deg) translate(0.1rem, -0.2rem);
+            border-radius: 0.3rem;
+        }
+        &.toggledBar3 {
+            opacity: 0;
+            width: 0;
+            transform: translateX(1rem);
+        }
+    }
+
+    .bar3 {
+        background-color: #fff;
+        width: 2.7rem;
+        height: 0.4rem;
+        transition: all 0.3s ease-in-out;
+        border-radius: 0.1rem;
+
+        &.bar3Toggled {
+            opacity: 0;
+        }
+
+        &.bar3Black {
+            background-color: #000;
+        }
+    }
+}
+
+.menuClickArea {
+    transition: all 0.3s ease-in-out;
+    width: 0;
+    height: 0;
+    top: 6rem;
+    right: 6rem;
+    position: fixed;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+
+    &.active {
+        background-color: #282828fa;
+        top: -20rem;
+        right: -10rem;
+        width: 100vw;
+        height: 100vh;
+        transform: translate(-10rem, 20rem);
+        opacity: 1;
+        pointer-events: all;
+
+        .menu {
+            .links {
+                opacity: 1;
+                transform: translateY(-10rem) scale(1);
+            }
+        }
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+
+        .links {
+            color: #fff;
+            display: block;
+            font-family: "Alegreya Sans", "Times New Roman", Times, serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: 1.2px;
+            position: relative;
+            text-transform: uppercase;
+            margin-left: 3rem;
+            height: 4rem;
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+            transform: translateY(10rem) translateX(20rem) scale(0.3);
+
+            &:hover {
+                color: rgb(250, 181, 137);
+            }
+
+            &.disabled {
+                pointer-events: none;
+                color: #bbbbbb;
+            }
+
+            &.active {
+                color: #bc0202;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .burger {
+        display: none;
+    }
+}

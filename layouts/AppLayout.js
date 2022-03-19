@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 
-import styles from './layouts.module.scss';
-
 import {
   ScrollToTop,
   Footer,
   SocialMediaButtons,
-  TopBarLogo,
-  TopMenu,
   ResponsiveMenu,
 } from '../components';
+
+import styles from './layouts.module.scss';
+import { TopBar } from '../components/topBar/TopBar';
 
 export const AppLayout = ({ children }) => {
   const [navScrolled, setNavScrolled] = useState(false);
@@ -55,16 +54,11 @@ export const AppLayout = ({ children }) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
       </Head>
 
-      <nav className={`${styles.nav} ${navScrolled ? styles.navScrolled : ''}`} >
-        {/* Topbar Logo */}
-        <TopBarLogo navScrolled={navScrolled} styles={styles} />
+      {/* TopBar Menu */}
+      <TopBar styles={styles} navScrolled={navScrolled} />
 
-        {/* Top Menu */}
-        <TopMenu styles={styles} />
-
-        {/* Responsive Menu */}
-        <ResponsiveMenu navScrolled={navScrolled} styles={styles} />
-      </nav>
+      {/* Responsive Menu */}
+      <ResponsiveMenu navScrolled={navScrolled} styles={styles} />
 
       {/* Sidebar Social Media Icons */}
       <SocialMediaButtons navScrolled={navScrolled} styles={styles} />

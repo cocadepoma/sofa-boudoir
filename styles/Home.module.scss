@@ -1,11 +1,10 @@
 .headerContainer {
-    background-image: url(/images/header2.jpg);
+    background-image: url(/images/header/header.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: "no-repeat";
     height: 100vh;
     max-height: 1440px;
-    filter: grayscale(1) brightness(0.7);
     padding: 1.2rem;
     box-shadow: 0px 3px 10px 1px #0000007a;
 
@@ -78,6 +77,7 @@
         }
 
         .ourMessage {
+            background-color: rgba(255, 255, 255, 0.753);
             padding: 2rem;
             box-shadow: 1px 4px 8px -2px #00000056;
             margin: 0.9rem;
@@ -129,7 +129,7 @@
         }
 
         .contactInfoContainer {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.753);
             padding: 2rem;
             box-shadow: 1px 4px 8px -2px #00000056;
 

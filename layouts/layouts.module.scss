@@ -47,22 +47,7 @@
         .links {
             &.disabled {
                 pointer-events: none;
-                color: #9b9b9b80;
-            }
-        }
-    }
-
-    .responsiveMenu {
-        display: block;
-        cursor: pointer;
-
-        .burger {
-            color: #fff;
-            font-size: 2.5rem;
-
-            &.burgerScrolled {
-                margin-top: 0.3rem;
-                color: #000;
+                color: #bbbbbb;
             }
         }
     }
@@ -74,29 +59,26 @@
     top: 40vh;
     display: flex;
     flex-direction: column;
-    z-index: 1999;
+    z-index: 100;
 
     .socialButton {
         font-size: 0.5rem;
-
-        color: #fff;
-        border: 1px solid rgba(255, 255, 255, 0.281);
-        border-radius: 50%;
-
+        color: rgba(255, 255, 255, 0.719);
+        border: 1px solid rgba(255, 255, 255, 0.137);
+        border-radius: 20%;
         padding: 0.7rem;
-
         cursor: pointer;
-        transition: all 0.5s ease-in-out;
+        transition: all 0.3s ease-in-out;
         width: 1.2rem;
-
         height: 1.2rem;
 
         margin-bottom: 0.85rem;
 
         &:hover {
             border: 1px solid rgba(255, 255, 255, 0);
-            transform: scale(1.1);
             box-shadow: 2px 2px 6px -1px #00000069;
+            color: rgb(255, 255, 255);
+            transform: scale(1.1);
 
             &.facebook {
                 background-color: #3b5998;
@@ -138,7 +120,7 @@
     background-color: rgba(63, 63, 63, 0.548);
     bottom: 1.5rem;
     border-radius: 50%;
-    color: rgba(255, 255, 255, 0.767);
+    color: rgba(255, 255, 255, 0.938);
     cursor: pointer;
     display: flex;
     height: 3rem;
@@ -204,7 +186,7 @@
                 font-family: "Alegreya Sans", "Times New Roman", Times, serif;
                 font-size: 1.6rem;
                 font-weight: 400;
-                margin-right: 1.25rem;
+                margin-right: 2rem;
                 letter-spacing: 1.2px;
                 position: relative;
                 text-transform: uppercase;
@@ -223,17 +205,14 @@
                 }
             }
         }
-        .responsiveMenu {
-            display: none;
-        }
     }
 
     .goTopButton {
         bottom: 2rem;
-        height: 3.4rem;
-        font-size: 2rem;
+        height: 4.5rem;
+        font-size: 2.4rem;
         right: 2rem;
-        width: 3.5rem;
+        width: 4.5rem;
 
         &:hover {
             transform: scale(1.1);

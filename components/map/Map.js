@@ -37,7 +37,7 @@ const Map = ({ className }) => {
           }}
         >
           <p>
-            El sofá rojo, ven a vernos!
+            Somos el sofá rojo, ven a vernos!
           </p>
           <p>
             Plaza de los Ejércitos Españoles, 9 Bajo, Ubrique (Cádiz)
