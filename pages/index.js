@@ -130,7 +130,7 @@ export default function Home() {
               ourImage?.src
                 ? (
                   <div className={styles.ourImageContainer}>
-                    <img src={ourImage.src} />
+                    <img src={ourImage.src} alt="image-about-us" />
                   </div>
                 )
                 : (
@@ -204,7 +204,7 @@ export default function Home() {
                 </div>
 
                 <div className={styles.contactLinks}>
-                  <a href="mailto: raul.lemos@elsofarojo.es" target="_blank">raul.lemos@elsofarojo.es</a>
+                  <a href="mailto: raul.lemos@elsofarojo.es" target="_blank" rel="noreferrer">raul.lemos@elsofarojo.es</a>
                 </div>
               </div>
 
@@ -215,7 +215,7 @@ export default function Home() {
                 </div>
 
                 <div className={styles.contactLinks}>
-                  <a href="https://goo.gl/maps/ipm3XBom5ESprE6D8" target="_blank">Plaza de los Ejércitos Españoles, 9 Bajo, Ubrique (Cádiz)</a>
+                  <a href="https://goo.gl/maps/ipm3XBom5ESprE6D8" target="_blank" rel="noreferrer">Plaza de los Ejércitos Españoles, 9 Bajo, Ubrique (Cádiz)</a>
                 </div>
               </div>
             </div>

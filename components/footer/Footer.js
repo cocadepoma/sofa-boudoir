@@ -45,7 +45,7 @@ export const Footer = () => {
             Ubrique (Cádiz)
           </p>
           <a href="tel:+34696666456">+34 696 666 456</a>
-          <a href="mailto: raul.lemos@elsofarojo.es" target="_blank">raul.lemos@elsofarojo.es</a>
+          <a href="mailto: raul.lemos@elsofarojo.es" target="_blank" rel="noreferrer">raul.lemos@elsofarojo.es</a>
         </div>
       </div>
 

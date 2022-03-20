@@ -8,8 +8,8 @@ export const TopBarLogo = ({ navScrolled, styles }) => {
     <div className={`${styles.logo} ${navScrolled ? styles.logoScrolled : ''}`}>
       {
         navScrolled
-          ? <Image src={imageLogoBlack} />
-          : <Image src={imageLogo} />
+          ? <Image src={imageLogoBlack} alt="el-sofa-boudoir-logo-black" />
+          : <Image src={imageLogo} alt="el-sofa-boudoir-logo" />
       }
     </div>
   );
