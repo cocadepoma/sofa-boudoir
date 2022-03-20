@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import Head from 'next/head';
 
 import {
@@ -10,8 +10,11 @@ import {
 
 import styles from './layouts.module.scss';
 import { TopBar } from '../components/topBar/TopBar';
+import { UIContext } from '../contexts/UIContext/UIContext';
 
 export const AppLayout = ({ children }) => {
+  const { isLightBoxModalOpened } = useContext(UIContext);
+
   const [navScrolled, setNavScrolled] = useState(false);
   const [goTopScrolled, setGoTopScrolled] = useState(false);
 
@@ -70,7 +73,7 @@ export const AppLayout = ({ children }) => {
         </main>
 
         {/* Go Top Button */}
-        <ScrollToTop goTopScrolled={goTopScrolled} styles={styles} />
+        <ScrollToTop goTopScrolled={goTopScrolled} styles={styles} disabled={isLightBoxModalOpened} />
 
         {/* Footer */}
         <Footer />

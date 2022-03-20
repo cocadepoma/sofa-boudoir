@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useContext } from 'react';
 import dynamic from "next/dynamic";
 
 import Carousel, { Modal, ModalGateway } from "react-images";
@@ -12,14 +12,16 @@ import { AppLayout } from '../layouts/AppLayout';
 // import Carousel from '../components/carousel/Carousel';
 import styles from '../styles/Home.module.scss';
 
-import { Parallax, ParallaxBanner } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
 import ContentLoader from "react-content-loader";
 import { waitFor } from '../helpers/helpers';
+import { UIContext } from '../contexts/UIContext/UIContext';
 
 export default function Home() {
   const MapWithNoSSR = dynamic(() => import("../components/map/Map"), {
     ssr: false
   });
+  const { toggleLightBoxModal } = useContext(UIContext);
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -67,11 +69,13 @@ export default function Home() {
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
+    toggleLightBoxModal(true);
   }, []);
 
   const closeLightbox = () => {
     setCurrentImage(0);
     setViewerIsOpen(false);
+    toggleLightBoxModal(false);
   };
 
   const SLIDE_COUNT = 5;

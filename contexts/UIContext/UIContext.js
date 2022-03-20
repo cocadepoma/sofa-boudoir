@@ -5,8 +5,10 @@ import { useDimensions } from '../../hooks/useDimensions';
 export const UIContext = createContext({});
 
 export const UIContextProvider = ({ children }) => {
-  const [isMenuResponsiveEnabled, setIsMenuResponsiveEnabled] = useState(false);
   const { windowWidth } = useDimensions();
+
+  const [isMenuResponsiveEnabled, setIsMenuResponsiveEnabled] = useState(false);
+  const [isLightBoxModalOpened, setIsLightBoxModalOpened] = useState(false);
 
   useEffect(() => {
     isMenuResponsiveEnabled
@@ -24,10 +26,16 @@ export const UIContextProvider = ({ children }) => {
     setIsMenuResponsiveEnabled(!isMenuResponsiveEnabled);
   };
 
+  const toggleLightBoxModal = (value) => {
+    setIsLightBoxModalOpened(value);
+  };
+
   return (
     <UIContext.Provider value={{
       isMenuResponsiveEnabled,
       toggleMenu,
+      isLightBoxModalOpened,
+      toggleLightBoxModal
     }}>
       {children}
     </UIContext.Provider>
