@@ -12,6 +12,7 @@ async function handler(req, res) {
   try {
     for await (const filename of filenames) {
       const filepath = path.resolve(dir, filename);
+
       const image = await getImagesFromDir(filepath, dirRelativeToPublicFolder, filename)
 
       if (image) {
@@ -26,7 +27,7 @@ async function handler(req, res) {
 };
 
 const getImagesFromDir = async (filepath, dirRelativeToPublicFolder, filename) => {
-  if (path.extname(filename) === '.jpg' || path.extname(filename) === '.png') {
+  if (isValidImageExtension(path.extname(filename)) && !filename.startsWith('.')) {
     const fetchedImage = await Jimp.read(filepath).then(jimpImage => {
       return {
         src: path.join('/', dirRelativeToPublicFolder, filename),
@@ -38,6 +39,10 @@ const getImagesFromDir = async (filepath, dirRelativeToPublicFolder, filename) =
   } else {
     return null;
   }
+};
+
+const isValidImageExtension = (image) => {
+  return image.endsWith('.jpg') || image.endsWith('.png') || image.endsWith('.jpeg');
 };
 
 export default handler;
