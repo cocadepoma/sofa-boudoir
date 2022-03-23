@@ -1,0 +1,243 @@
+.loginMainContainer {
+    background: rgb(31, 36, 150);
+    background: radial-gradient(circle, rgba(31, 36, 150, 1) 22%, rgba(0, 7, 50, 1) 100%);
+    height: 100vh;
+    font-family: "Alegreya Sans", "Times New Roman", Times, serif;
+
+    .formContainer {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(8, 8, 8, 0.541);
+        border-radius: 1rem;
+        padding: 4rem 2rem;
+        box-shadow: 2px 2px 14px -2px black;
+        width: 90%;
+
+        h1 {
+            position: absolute;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        form {
+            margin-top: 3rem;
+
+            .closeIcon {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                cursor: pointer;
+                font-size: 2.3rem;
+                color: #fff;
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    color: rgb(255, 255, 255);
+                }
+            }
+            .formGroup {
+                margin-bottom: 2rem;
+                width: 100%;
+                position: relative;
+
+                .inputIcon {
+                    color: rgb(182, 182, 182);
+                    position: absolute;
+                    top: 1.5rem;
+                    left: 1.2rem;
+                }
+
+                .inputEyeIcon {
+                    cursor: pointer;
+                    color: rgb(182, 182, 182);
+                    position: absolute;
+                    top: 1.5rem;
+                    right: 1.3rem;
+                }
+                .inputEyeIconSlash {
+                    cursor: pointer;
+                    color: rgb(182, 182, 182);
+                    position: absolute;
+                    top: 1.5rem;
+                    right: 1.2rem;
+                }
+
+                input {
+                    background-color: rgb(255, 255, 255);
+                    padding: 1.5rem;
+                    padding-left: 4rem;
+                    font-size: 1.4rem;
+                    width: 100%;
+                    letter-spacing: 1px;
+
+                    &::placeholder {
+                        color: rgb(182, 182, 182);
+                        letter-spacing: 2px;
+                    }
+                }
+            }
+
+            .checkGroup {
+                display: flex;
+                align-items: center;
+
+                .checkbox {
+                    --border-default: #bbbbc1;
+                    --border-hover: #9898a3;
+                    --active: #5dbdfd;
+                    --active-tick: #ffffff;
+                    display: block;
+                    width: 18px;
+                    height: 18px;
+                    cursor: pointer;
+                    position: relative;
+                    -webkit-tap-highlight-color: transparent;
+
+                    svg {
+                        display: block;
+                        position: absolute;
+                    }
+
+                    input {
+                        display: block;
+                        outline: none;
+                        border: none;
+                        padding: 0;
+                        margin: 0;
+                        -webkit-appearance: none;
+                        width: 18px;
+                        height: 18px;
+                        border-radius: 36% / 36%;
+                        box-shadow: inset 0 0 0 1.5px var(--border, var(--border-default));
+                        background: var(--background, transparent);
+                        transition: background 0.25s linear, box-shadow 0.25s linear;
+
+                        & + svg {
+                            width: 21px;
+                            height: 18px;
+                            left: 0;
+                            top: 0;
+                            color: var(--active);
+
+                            .tick {
+                                stroke-dasharray: 20;
+                                stroke-dashoffset: var(--stroke-dashoffset, 20);
+                                transition: stroke-dashoffset 0.2s;
+                                &.mask {
+                                    stroke: var(--active-tick);
+                                }
+                            }
+                            & + svg {
+                                width: 11px;
+                                height: 11px;
+                                fill: none;
+                                stroke: var(--active);
+                                stroke-width: 1.25;
+                                stroke-linecap: round;
+                                top: -6px;
+                                right: -10px;
+                                stroke-dasharray: 4.5px;
+                                stroke-dashoffset: 13.5px;
+                                pointer-events: none;
+                                animation: var(--animation, none) 0.2s ease 0.175s;
+                            }
+                        }
+                        &:checked {
+                            --background: var(--active);
+                            --border: var(--active);
+                            & + svg {
+                                --stroke-dashoffset: 0;
+                                & + svg {
+                                    --animation: check;
+                                }
+                            }
+                        }
+                    }
+                    &:hover {
+                        input {
+                            &:not(:checked) {
+                                --border: var(--border-hover);
+                            }
+                        }
+                    }
+                }
+                .checkboxText {
+                    color: rgb(255, 255, 255);
+                    margin-left: 0.7rem;
+                    margin-top: 0.3rem;
+                }
+            }
+
+            .buttonGroup {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 4rem;
+
+                button {
+                    padding: 1.5rem;
+                    font-size: 1.4rem;
+                    background-color: #42c1fc;
+                    color: #fff;
+                    border: none;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    width: 100%;
+                    text-transform: uppercase;
+                    letter-spacing: 1.2px;
+
+                    &:hover {
+                        background-color: #2b8fbd;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+    .loginMainContainer {
+        .formContainer {
+            top: 50%;
+        }
+    }
+}
+
+@media (min-width: 468px) {
+    .loginMainContainer {
+        .formContainer {
+            padding: 3rem;
+            width: 40rem;
+            h1 {
+                font-size: 1.7rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .loginMainContainer {
+        .formContainer {
+            padding: 5rem;
+            width: 45rem;
+
+            form {
+                margin-top: 4rem;
+                .buttonGroup {
+                    margin-top: 6rem;
+                }
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    }
+}
