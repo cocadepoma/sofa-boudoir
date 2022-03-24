@@ -4,13 +4,16 @@ config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatic
 import '../styles/globals.scss'
 import { ParallaxProvider } from "react-scroll-parallax";
 import { UIContextProvider } from "../contexts/UIContext/UIContext";
+import { ToastContextProvider } from '../contexts/toastContext/ToastContext';
 
 function MyApp({ Component, pageProps }) {
   return (
     <UIContextProvider>
-      <ParallaxProvider>
-        <Component {...pageProps} />
-      </ParallaxProvider>
+      <ToastContextProvider>
+        <ParallaxProvider>
+          <Component {...pageProps} />
+        </ParallaxProvider>
+      </ToastContextProvider>
     </UIContextProvider>
   )
 }

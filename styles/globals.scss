@@ -219,3 +219,7 @@ a {
 .our-image {
     filter: grayscale(0.9) brightness(1);
 }
+
+.input-error {
+    border: 1px solid rgba(243, 6, 6, 0.637) !important;
+}

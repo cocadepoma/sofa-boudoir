@@ -2,13 +2,15 @@
     background-image: url(/images/header/header.jpg);
     background-position: center;
     background-size: cover;
-    background-repeat: "no-repeat";
+    background-repeat: no-repeat;
     height: 100vh;
     max-height: 1440px;
     padding: 1.2rem;
     box-shadow: 0px 3px 10px 1px #0000007a;
+    animation: fadeIn 0.5s ease-in-out;
 
     h4 {
+        animation: fadeIn 0.5s ease-in-out;
         position: absolute;
         bottom: 7rem;
         right: 3rem;
@@ -20,6 +22,7 @@
     }
 
     h5 {
+        animation: fadeIn 0.5s ease-in-out;
         position: absolute;
         right: 3rem;
         bottom: 4rem;
@@ -31,6 +34,7 @@
 }
 
 .gallerySection {
+    animation: fadeIn 0.5s ease-in-out;
     padding: 1rem;
 
     h3 {
@@ -42,6 +46,7 @@
 }
 
 .aboutSection {
+    animation: fadeIn 0.5s ease-in-out;
     padding: 0.75rem;
 
     h3 {
@@ -106,6 +111,7 @@
 }
 
 .contactSection {
+    animation: fadeIn 0.5s ease-in-out;
     padding: 1rem;
 
     h3 {
