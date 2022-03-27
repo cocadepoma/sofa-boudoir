@@ -1,30 +1,41 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useRouter } from 'next/router';
 
+import { AwesomeButton } from "react-awesome-button";
+
 import { ToastContext } from '../../contexts/toastContext/ToastContext';
 import { useForm } from '../../hooks/useForm';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faUser, faXmark, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faLock, faUser, faXmark, faEye, faEyeSlash, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import isEmail from 'validator/lib/isEmail';
 
 import styles from './Login.module.scss';
+
+import { saveOrCleanEmailInStorage } from '../../helpers/storage';
+
+import 'react-awesome-button/dist/themes/theme-c137.css';
+import { AuthContext } from '../../contexts/authContext/AuthContext';
 import { waitFor } from '../../helpers/helpers';
 
 export default function Login() {
   const router = useRouter();
-  const { toastError, toast, setCustomStyleOn } = useContext(ToastContext);
+  const { toastError } = useContext(ToastContext);
+  const { login } = useContext(AuthContext);
 
   const { values, handleChange } = useForm({ email: '', password: '', rememberMe: false });
   const { email, password, rememberMe } = values;
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const emailInput = useRef(null);
   const passswordInput = useRef(null);
 
   useEffect(() => {
     const emailLocal = localStorage.getItem('email');
     if (emailLocal) {
+      handleChange({ target: { name: 'rememberMe', checked: true, type: 'checkbox' } });
       handleChange({ target: { name: 'email', value: emailLocal } });
     }
   }, []);
@@ -53,61 +64,32 @@ export default function Login() {
     return isValid;
   };
 
-  const handleSubmitLogin = async (event) => {
-    event.preventDefault();
+  const handleSubmitLogin = async () => {
+    console.log(rememberMe);
+    setIsLoading(true);
 
+    await waitFor(1000)
     const areFieldsValid = checkFields();
 
-    if (rememberMe) {
-      localStorage.setItem('email', email);
-    } else {
-      localStorage.removeItem('email');
-    }
+    saveOrCleanEmailInStorage(rememberMe, email);
 
     if (!areFieldsValid) {
+      setIsLoading(false);
       toastError('Por favor, revise los campos marcados en rojo.');
-      // TODO: show error message
       return;
     }
 
-    // TODO: Log in
-    // toast.promise(
-    //   setTimeout(() => { }, 3000),
-    //   {
-    //     loading: 'Loading',
-    //     success: (data) => `Successfully saved ${data.name}`,
-    //     error: (err) => `This just happened: ${err.toString()}`,
-    //   },
-    //   {
-    //     style: {
-    //       minWidth: '250px',
-    //     },
-    //     success: {
-    //       duration: 5000,
-    //       icon: '🔥',
-    //     },
-    //   }
-    // );
-    setCustomStyleOn(true);
+    const loginResp = await login(email, password);
 
-    toast.promise(waitFor(5000), {
-      loading: 'Loading',
-      success: 'Got the data',
-      error: 'Error when fetching',
+    if (!loginResp.ok) {
+      setIsLoading(false);
+      toastError(loginResp.error);
+      return;
+    }
 
-      style: {
-
-        position: 'absolute',
-        top: '200px',
-        background: '#00b894',
-
-      },
-
-    });
-    console.log({ values });
+    router.push('/admin/dashboard');
+    setIsLoading(false);
   };
-
-
 
   return (
     <div className={styles.loginMainContainer}>
@@ -116,7 +98,7 @@ export default function Login() {
 
         <h1>Iniciar Sesión</h1>
 
-        <form onSubmit={handleSubmitLogin}>
+        <form onSubmit={handleSubmitLogin} noValidate>
           <FontAwesomeIcon
             icon={faXmark}
             className={styles.closeIcon}
@@ -135,6 +117,7 @@ export default function Login() {
               type="email"
               onChange={handleChange}
               placeholder="Email"
+
             />
           </div>
 
@@ -175,7 +158,13 @@ export default function Login() {
           <div className={styles.checkGroup}>
 
             <label className={styles.checkbox}>
-              <input type="checkbox" value={rememberMe} name="rememberMe" onChange={handleChange} />
+              <input
+                type="checkbox"
+                value={rememberMe}
+                name="rememberMe"
+                onChange={handleChange}
+                checked={rememberMe}
+              />
               <svg viewBox="0 0 21 18">
                 <symbol id="tick-path" viewBox="0 0 21 18" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5.22003 7.26C5.72003 7.76 7.57 9.7 8.67 11.45C12.2 6.05 15.65 3.5 19.19 1.69" fill="none" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" />
@@ -197,15 +186,37 @@ export default function Login() {
 
             <label htmlFor="rememberMe" className={styles.checkboxText}>Recordarme</label>
           </div>
-
-          <div className={styles.buttonGroup}>
-            <button>
-              Login
-
-            </button>
-          </div>
-
         </form>
+
+        <div className={styles.buttonGroup}>
+          <AwesomeButton
+            type="secondary"
+            size="medium"
+            action={handleSubmitLogin}
+          >
+            {
+              isLoading && (
+                <>
+                  CARGANDO
+                  <FontAwesomeIcon
+                    style={{ marginLeft: '5px' }}
+                    spin
+                    icon={faRotateRight}
+                  />
+                </>
+              )
+            }
+            {
+              !isLoading && (
+                <>
+                  LOGIN
+                </>
+              )
+            }
+          </AwesomeButton>
+        </div>
+
+
 
       </div>
     </div>

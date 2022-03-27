@@ -5,13 +5,16 @@ import '../styles/globals.scss'
 import { ParallaxProvider } from "react-scroll-parallax";
 import { UIContextProvider } from "../contexts/UIContext/UIContext";
 import { ToastContextProvider } from '../contexts/toastContext/ToastContext';
+import { AuthContextProvider } from "../contexts/authContext/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   return (
     <UIContextProvider>
       <ToastContextProvider>
         <ParallaxProvider>
-          <Component {...pageProps} />
+          <AuthContextProvider>
+            <Component {...pageProps} />
+          </AuthContextProvider>
         </ParallaxProvider>
       </ToastContextProvider>
     </UIContextProvider>

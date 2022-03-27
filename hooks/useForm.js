@@ -4,10 +4,10 @@ export const useForm = (initialValues) => {
   const [form, setForm] = useState(initialValues);
 
   const handleChange = ({ target }) => {
-    setForm({
-      ...form,
+    setForm((values) => ({
+      ...values,
       [target.name]: target.type === 'checkbox' ? target.checked : target.value
-    });
+    }));
   };
 
   const resetValues = () => {
