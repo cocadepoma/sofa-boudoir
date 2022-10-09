@@ -1,4 +1,4 @@
-import withAuth from '../../../components/withAuth/withAuth';
+import WithAuth from '../../../components/withAuth/withAuth';
 
 const Dashboard = () => {
   return (
@@ -8,4 +8,4 @@ const Dashboard = () => {
   );
 };
 
-export default withAuth(Dashboard);
+export default WithAuth(Dashboard);
