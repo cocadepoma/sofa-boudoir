@@ -1,8 +1,6 @@
 import React, { useCallback, useEffect, useState, useContext } from 'react';
 import dynamic from "next/dynamic";
 
-import Carousel, { Modal, ModalGateway } from "react-images";
-// import Gallery from 'react-photo-gallery-next';
 import Masonry from 'react-masonry-css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,7 +8,6 @@ import { faEnvelope, faMap, faMobileScreenButton } from '@fortawesome/free-solid
 
 import { ImagesPlaceholder } from '../components/imagesPlaceholder/ImagesPlaceholder';
 import { AppLayout } from '../layouts/AppLayout';
-// import Carousel from '../components/carousel/Carousel';
 import styles from '../styles/Home.module.scss';
 
 import { Parallax } from 'react-scroll-parallax';
@@ -138,7 +135,7 @@ export default function Home() {
           }
 
           {/* Modal Image Gallery */}
-          <ModalGateway>
+          {/* <ModalGateway>
             {viewerIsOpen && (
               <Modal onClose={closeLightbox}>
                 <Carousel
@@ -151,7 +148,7 @@ export default function Home() {
                 />
               </Modal>
             )}
-          </ModalGateway>
+          </ModalGateway> */}
         </section>
 
         <section className={styles.aboutSection} >
