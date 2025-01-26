@@ -6,23 +6,23 @@ export const TopMenu = ({ styles }) => {
 
   return (
     <div className={styles.menu}>
-      <Link href='/'>
+      <Link legacyBehavior href='/'>
         <a className={`${styles.links} ${pathname === '/' ? styles.active : ''}`}>Home</a>
       </Link>
 
-      <Link href='/photoshoots'>
+      <Link legacyBehavior href='/photoshoots'>
         <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/photoshoots') ? styles.active : ''}`}>Galería</a>
       </Link>
 
-      <Link href='/about'>
+      <Link legacyBehavior href='/about'>
         <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/about') ? styles.active : ''}`}>Sobre nosotros</a>
       </Link>
 
-      <Link href='/blog'>
+      <Link legacyBehavior href='/blog'>
         <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/blog') ? styles.active : ''}`}>Blog</a>
       </Link>
 
-      <Link href='/contact'>
+      <Link legacyBehavior href='/contact'>
         <a className={`${styles.disabled} ${styles.links} ${pathname.startsWith('/contact') ? styles.active : ''}`}>Contacto</a>
       </Link>
     </div>

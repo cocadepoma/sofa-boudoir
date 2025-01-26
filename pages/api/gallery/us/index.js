@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const Jimp = require('jimp');
+const { Jimp } = require('jimp');
 
 async function handler(req, res) {
   const dirRelativeToPublicFolder = 'images/us';

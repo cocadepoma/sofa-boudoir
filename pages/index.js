@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useState, useContext } from 'react';
 import dynamic from "next/dynamic";
 
 import Carousel, { Modal, ModalGateway } from "react-images";
-import Gallery from 'react-photo-gallery-next';
+// import Gallery from 'react-photo-gallery-next';
+import Masonry from 'react-masonry-css';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faMap, faMobileScreenButton } from '@fortawesome/free-solid-svg-icons';
@@ -16,6 +17,10 @@ import { Parallax } from 'react-scroll-parallax';
 import ContentLoader from "react-content-loader";
 import { waitFor } from '../helpers/helpers';
 import { UIContext } from '../contexts/UIContext/UIContext';
+
+import 'photoswipe/dist/photoswipe.css'
+
+import { Gallery, Item } from 'react-photoswipe-gallery'
 
 export default function Home() {
   const MapWithNoSSR = dynamic(() => import("../components/map/Map"), {
@@ -102,7 +107,33 @@ export default function Home() {
           {/* Grid Gallery */}
           {
             localImages.length > 0
-              ? <Gallery photos={localImages} onClick={openLightbox} margin={7} />
+              ? (
+                <Gallery>
+                  <Masonry
+                    breakpointCols={3}
+                    className="my-masonry-grid"
+                    columnClassName="my-masonry-grid_column"
+                  >
+
+                    {
+                      localImages.map((image, index) => (
+                        <Item
+                          key={index}
+                          original={image.src}
+                          thumbnail={image.src}
+                          width={image.width / 2}
+                          height={image.height / 2}
+                        >
+                          {({ ref, open }) => (
+                            <img ref={ref} onClick={open} src={image.src} />
+                          )}
+                        </Item>
+                      ))
+                    }
+                  </Masonry>
+
+                </Gallery>
+              )
               : <ImagesPlaceholder />
           }
 
@@ -226,7 +257,33 @@ export default function Home() {
         </section>
 
       </AppLayout>
+      <style jsx global>
+        {`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
 
+          .my-masonry-grid {
+            display: flex;
+           
+          }
+
+          .my-masonry-grid_column {
+            padding-left: 3px; /* gutter size */
+            background-clip: padding-box;
+          }
+
+          .my-masonry-grid_column span {
+            width: 100% !important;
+          }
+
+          .next-image {
+            object-fit: cover;
+          }
+      `}
+      </style>
     </>
   )
 }
