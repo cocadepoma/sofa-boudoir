@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { useRouter } from 'next/router';
 
-import { AwesomeButton } from "react-awesome-button";
 
 import { ToastContext } from '../../contexts/toastContext/ToastContext';
 import { useForm } from '../../hooks/useForm';
@@ -14,7 +13,6 @@ import styles from './Login.module.scss';
 
 import { saveOrCleanEmailInStorage } from '../../helpers/storage';
 
-import 'react-awesome-button/dist/themes/theme-c137.css';
 import { AuthContext } from '../../contexts/authContext/AuthContext';
 import { waitFor } from '../../helpers/helpers';
 
@@ -188,7 +186,7 @@ export default function Login() {
           </div>
         </form>
 
-        <div className={styles.buttonGroup}>
+        {/* <div className={styles.buttonGroup}>
           <AwesomeButton
             type="secondary"
             size="medium"
@@ -214,7 +212,7 @@ export default function Login() {
               )
             }
           </AwesomeButton>
-        </div>
+        </div> */}
 
 
 
